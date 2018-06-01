@@ -2,6 +2,7 @@ package com.elegion.test.behancer.ui.projects;
 
 import android.view.View;
 
+import com.arellomobile.mvp.InjectViewState;
 import com.elegion.test.behancer.BuildConfig;
 import com.elegion.test.behancer.common.BasePresenter;
 import com.elegion.test.behancer.data.Storage;
@@ -10,12 +11,13 @@ import com.elegion.test.behancer.utils.ApiUtils;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
-public class ProjectsPresenter extends BasePresenter {
-    private ProjectsView mView;
+@InjectViewState
+public class ProjectsPresenter extends BasePresenter<ProjectsView> {
+    //private ProjectsView mView;
     private Storage mStorage;
 
-    public ProjectsPresenter(ProjectsView mView, Storage mStorage) {
-        this.mView = mView;
+    public ProjectsPresenter(Storage mStorage) {
+        //this.mView = mView;
         this.mStorage = mStorage;
     }
 
@@ -26,13 +28,13 @@ public class ProjectsPresenter extends BasePresenter {
                         ApiUtils.NETWORK_EXCEPTIONS.contains(throwable.getClass()) ? mStorage.getProjects() : null)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnSubscribe(disposable -> mView.showLoading())
-                .doFinally(() -> mView.hideLoading())
-                .subscribe(response -> mView.showProjects(response.getProjects()),
-                        throwable -> mView.showError()));
+                .doOnSubscribe(disposable -> getViewState().showLoading())
+                .doFinally(() -> getViewState().hideLoading())
+                .subscribe(response -> getViewState().showProjects(response.getProjects()),
+                        throwable -> getViewState().showError()));
     }
 
     public void openProfileFragment(String username) {
-        mView.openProfileFragment(username);
+        getViewState().openProfileFragment(username);
     }
 }
