@@ -1,4 +1,4 @@
-package com.elegion.test.behancer.ui.projects;
+package com.elegion.test.behancer.common;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.elegion.test.behancer.R;
+import com.elegion.test.behancer.common.BaseProjectsAdapter;
 import com.elegion.test.behancer.data.model.project.Project;
 import com.elegion.test.behancer.utils.DateUtils;
 import com.squareup.picasso.Picasso;
@@ -14,7 +15,7 @@ import com.squareup.picasso.Picasso;
  * Created by Vladislav Falzan.
  */
 
-public class ProjectsHolder extends RecyclerView.ViewHolder {
+public class BaseProjectsHolder extends RecyclerView.ViewHolder {
 
     private static final int FIRST_OWNER_INDEX = 0;
 
@@ -23,7 +24,7 @@ public class ProjectsHolder extends RecyclerView.ViewHolder {
     private TextView mUsername;
     private TextView mPublishedOn;
 
-    public ProjectsHolder(View itemView) {
+    public BaseProjectsHolder(View itemView) {
         super(itemView);
         mImage = itemView.findViewById(R.id.image);
         mName = itemView.findViewById(R.id.tv_name);
@@ -31,7 +32,7 @@ public class ProjectsHolder extends RecyclerView.ViewHolder {
         mPublishedOn = itemView.findViewById(R.id.tv_published);
     }
 
-    public void bind(Project item, ProjectsAdapter.OnItemClickListener onItemClickListener) {
+    public void bind(Project item, BaseProjectsAdapter.OnItemClickListener onItemClickListener) {
         Picasso.with(mImage.getContext()).load(item.getCover().getPhotoUrl())
                 .fit()
                 .into(mImage);

@@ -1,4 +1,4 @@
-package com.elegion.test.behancer.ui.projects;
+package com.elegion.test.behancer.common;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -16,26 +16,26 @@ import java.util.List;
  * Created by Vladislav Falzan.
  */
 
-public class ProjectsAdapter extends RecyclerView.Adapter<ProjectsHolder> {
+public class BaseProjectsAdapter extends RecyclerView.Adapter<BaseProjectsHolder> {
 
     @NonNull
     private final List<Project> mProjects = new ArrayList<>();
     private final OnItemClickListener mOnItemClickListener;
 
-    public ProjectsAdapter(OnItemClickListener onItemClickListener) {
+    public BaseProjectsAdapter(OnItemClickListener onItemClickListener) {
         mOnItemClickListener = onItemClickListener;
     }
 
     @NonNull
     @Override
-    public ProjectsHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public BaseProjectsHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.li_projects, parent, false);
-        return new ProjectsHolder(view);
+        return new BaseProjectsHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ProjectsHolder holder, int position) {
+    public void onBindViewHolder(@NonNull BaseProjectsHolder holder, int position) {
         Project project = mProjects.get(position);
         holder.bind(project, mOnItemClickListener);
     }

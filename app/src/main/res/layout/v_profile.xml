@@ -48,4 +48,14 @@
         android:layout_alignStart="@id/tv_created_on_details"
         android:layout_below="@id/tv_created_on_details" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bt_show_projects"
+        android:text="@string/show_projects"
+        android:layout_alignLeft="@id/tv_location_details"
+        android:layout_alignStart="@id/tv_location_details"
+        android:layout_below="@id/tv_location_details"
+        />
+
 </RelativeLayout>
