@@ -3,6 +3,9 @@ package com.elegion.test.behancer.ui.projects;
 import android.view.View;
 
 import com.arellomobile.mvp.InjectViewState;
+import com.arellomobile.mvp.viewstate.strategy.OneExecutionStateStrategy;
+import com.arellomobile.mvp.viewstate.strategy.SkipStrategy;
+import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 import com.elegion.test.behancer.BuildConfig;
 import com.elegion.test.behancer.common.BasePresenter;
 import com.elegion.test.behancer.data.Storage;
